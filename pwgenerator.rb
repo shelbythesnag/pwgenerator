@@ -1,5 +1,5 @@
 load 'display.rb'
-
+# comments
 #pw parameters
 def default
     lowercase = ('a'...'z').to_a

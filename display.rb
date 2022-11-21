@@ -1,5 +1,5 @@
 #logic
-#is input number? or not
+#is input number? or not #additional comments
 def check_numberlogic (x)
     if x > 0
         return true
