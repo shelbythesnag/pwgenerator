@@ -1,5 +1,7 @@
-load 'includeparameter.rb'
-load 'passwordlength.rb'
+load 'terminal-helper-functions.rb'
+
+
+#Terminal Front-End: Receiving User Input
 
 class Parameters
     attr_accessor :parameter, :value
@@ -18,17 +20,32 @@ class Parameters
             return []
         end
     end
-
 end   
 
-def newpw
-    passwordparameters = Parameters.new
-    passwordparameters.add('numbers',(0...9).to_a)
-    passwordparameters.add('UPPERCASE',('A'...'Z').to_a)
-    passwordparameters.add('symbols',['!','@','#','$','%','^','&','*','(',')',',','|'])
-    newpw = passwordparameters.parameter
+def pwlength
+    puts "how long did you want your password?"
+    length = gets.chomp.to_f
+    return realnumber(length).to_i
 end
 
-puts newpw
 
-
+# Loops
+# invalid number loop - only relevant to terminal based pwgenerators
+def invalidnumberloop(length)
+    loop do
+        puts "that's not a valid number"
+        length = gets.chomp.to_f
+        break if ispositive(length) == true
+    end
+    return length.to_i
+end
+# Loops
+# invalid answer loop - only relevant to terminal based pwgenerators
+def invalidanswerloop (x)
+    loop do 
+        puts "incorrect format, try again - please select y/n"
+        x = gets.chomp.to_s
+        break if validanswer(x) == true
+    end
+    return x
+end
